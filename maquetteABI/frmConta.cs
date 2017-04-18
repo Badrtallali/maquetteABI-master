@@ -45,7 +45,7 @@ namespace maquetteABI
                 contact.Fonction= txtFonctionContact.Text;
                 contact.Mail= txtAdresseMailContact.Text;
                 contact.Telephone= txtTelephoneContact.Text;
-               //ontact.CommentContact = txtCommentContact.Text;
+  
             
                 this.DialogResult = DialogResult.OK;
 
@@ -67,7 +67,7 @@ namespace maquetteABI
             this.txtFonctionContact.Text = contact.Fonction;
             this.txtAdresseMailContact.Text = contact.Mail;
             this.txtTelephoneContact.Text = contact.Telephone.ToString();
-           //his.txtCommentContact.Text = unContact.CommentContact;
+         
         }
         /// <summary>
         /// methode pour gerer les exceptions

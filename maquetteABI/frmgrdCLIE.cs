@@ -59,8 +59,7 @@ namespace maquetteABI
             dt.Columns.Add(new DataColumn("Ville du Client"));
             dt.Columns.Add(new DataColumn("Code Postale Du Client"));
             // boucle remplissage de la DataTable à partir de la collection
-            // for (int i = 0; i < Donnees.ArrayClient.Count; i++)
-            //  { 
+           
 
             foreach (Clients unClientEF in Donnees.DB.Clients.ToList())
             { 
@@ -101,7 +100,7 @@ namespace maquetteABI
                     Clients  leClientEF = Donnees.DB.Clients.Find(idClient);
                     Donnees.DB.Clients.Remove(leClientEF);
                     Donnees.DB.SaveChanges();
-                   // Donnees.ArrayClient.RemoveAt(Convert.ToInt32(grdClient[0, grdClient.CurrentRow.Index].Value));       // Renaud the great  idea 
+                  
                     this.afficheClient();
                     this.btnSupprimer.Enabled = false;
                 }
