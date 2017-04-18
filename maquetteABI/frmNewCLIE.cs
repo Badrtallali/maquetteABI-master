@@ -66,12 +66,15 @@ namespace maquetteABI
                 code = false;
                 MessageBox.Show("Le numero de client saisi n'est pas un entier valide", "Erreur", MessageBoxButtons.OK);
             }
-            for (int i = 0; i < Donnees.DB.Clients.Count();i++ )
-                {
-                    if (!(Int32.Parse(txtNumeroDeClient.Text.Trim()) == Donnees.DB.Clients.Find(i).Numero_Client))
+
+            Int32 numSaisi = Int32.Parse(txtNumeroDeClient.Text.Trim());
+
+
+
+                    if (Donnees.DB.Clients.Find(numSaisi)== null)
                     {
                     code = true;
-                }
+                    }
                        
                     else
                     {
@@ -79,7 +82,6 @@ namespace maquetteABI
                         MessageBox.Show("le numero de Client est deja atibuer", "Erreur", MessageBoxButtons.OK);
                     }
 
-                }
 
 
             if (this.txtRaisonSocialeDuClient.Text =="")

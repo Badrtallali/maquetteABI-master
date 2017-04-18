@@ -45,12 +45,13 @@
             this.grdClient.BackgroundColor = System.Drawing.Color.Teal;
             this.grdClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdClient.Location = new System.Drawing.Point(12, 63);
+            this.grdClient.MultiSelect = false;
             this.grdClient.Name = "grdClient";
             this.grdClient.ReadOnly = true;
+            this.grdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdClient.Size = new System.Drawing.Size(544, 214);
             this.grdClient.TabIndex = 0;
-            this.grdClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdClient_CellClick_1);
-            this.grdClient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdClient_CellDoubleClick);
+            this.grdClient.DoubleClick += new System.EventHandler(this.grdClient_DoubleClick);
             // 
             // btnAjouterClient
             // 

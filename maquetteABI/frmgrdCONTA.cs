@@ -111,17 +111,46 @@ namespace maquetteABI
         /// <param name="e"></param>
         private void grdContact_DoubleClick(object sender, EventArgs e)
         {
+          //  if (grdClient.RowCount != 0)
+           // {
+          //      this.btnSupprimer.Enabled = true;
+           // }
+
+          //  if (grdClient.CurrentRow != null)
+          //  {
+               // Int32 iClient;
+             //   Boolean isIClientValid = Int32.TryParse(grdClient.CurrentRow.Cells[0].Value.ToString(), out iClient);
+             //   if (isIClientValid)
+              //  {
+               //     Clients leClient = Donnees.DB.Clients.Find(iClient);
+
+                //    frmCLIE frmclient = new frmCLIE(leClient);
+
+                 //   if (frmclient.ShowDialog() == DialogResult.OK)
+                 //   {
+                 //       this.afficheClient();
+                 //   }
+             //   }
+
+         //   }
+         if (grdContact.RowCount!=0)
+            { this.btnSupprimerContact.Enabled = true; }
+
             if (grdContact.CurrentRow != null)
-            {
-                Int32 iContact;
+             {
+            Int32 iContact;
+            
+                Boolean inidClientvalide = Int32.TryParse(grdContact.CurrentRow.Cells[0].Value.ToString(),out iContact);
+                if(inidClientvalide)
+                {
+  Contacts leContact = Donnees.DB.Contacts.Find(iContact);
 
-                iContact = (int)this.grdContact.CurrentRow.Cells[0].Value;
-                Contacts leContact = Donnees.DB.Contacts.Find(iContact);
-                    
-                frmContact frmcontact = new frmContact(ref leContact);
-
-                frmcontact.ShowDialog();
-                this.afficheContact();
+frmContact frmcontact = new frmContact(ref leContact);
+                    frmcontact.ShowDialog();
+                    this.afficheContact();
+                }
+              
+                   
             }
         }
         /// <summary>

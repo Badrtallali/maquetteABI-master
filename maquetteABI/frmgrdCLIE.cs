@@ -53,7 +53,7 @@ namespace maquetteABI
             DataRow dr;
             //cree une colone qui souvegarde l index 
            // dt.Columns.Add(new DataColumn("indexClient",typeof(Int32 )));
-// ajout à la datatable de 4 colonnes personnalisées
+            // ajout à la datatable de 4 colonnes personnalisées
             dt.Columns.Add(new DataColumn("Numero de Client"));
             dt.Columns.Add(new DataColumn("Raison Sociale"));
             dt.Columns.Add(new DataColumn("Ville du Client"));
@@ -79,11 +79,9 @@ namespace maquetteABI
             this.grdClient.DataSource = dt.DefaultView;
 
             //rendre invisible ma premiere colomn
-            grdClient.Columns[0].Visible = false;
+            grdClient.Columns[0].Visible = true;
             
-            this.grdClient.Refresh();
-            dt = null;
-            dr = null;
+
         }      
         /// <summary>
         /// supprime un client de la grille
@@ -128,39 +126,31 @@ namespace maquetteABI
         /// <param name="sender"></param>
         /// <param name="e"></param>
        
-        /// <summary>
-        /// s il y a des clients sur la grille , le fait de selectioner un client rend le bouton supprimer active
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void grdClient_CellClick_1(object sender, DataGridViewCellEventArgs e)
+
+        private void grdClient_DoubleClick(object sender, EventArgs e)
         {
             if (grdClient.RowCount != 0)
             {
                 this.btnSupprimer.Enabled = true;
-            } 
-        }
-        /// <summary>
-        /// double clic sur la grille ; ouvrir la feuille détail en y affichant le client correspondant a la ligne double clic
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void grdClient_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(grdClient.CurrentRow != null)
+            }
+
+            if (grdClient.CurrentRow != null)
             {
                 Int32 iClient;
-                iClient = this.grdClient.CurrentRow.Index;
-                Clients leClient = Donnees.DB.Clients.Find(iClient);
-                //  Client leClient = Donnees.ArrayClient[iClient];
+                Boolean isIClientValid = Int32.TryParse(grdClient.CurrentRow.Cells[0].Value.ToString(), out iClient);
+                if (isIClientValid)
+                {
+                    Clients leClient = Donnees.DB.Clients.Find(iClient);
 
-                frmCLIE frmclient = new frmCLIE(leClient);
-                   
-                frmclient.ShowDialog();
+                    frmCLIE frmclient = new frmCLIE(leClient);
 
-                this.afficheClient();
+                    if (frmclient.ShowDialog() == DialogResult.OK)
+                    {
+                        this.afficheClient();
+                    }
+                }
+                
             }
-            
         }
     }
 }

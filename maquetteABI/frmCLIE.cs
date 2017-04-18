@@ -13,11 +13,11 @@ namespace maquetteABI
     public partial class frmCLIE : Form
     {
         //j instancie un client
-        private Clients LeClient;
+        private Clients client;
        
         public frmCLIE(Clients unClient)
         {
-            this.LeClient = unClient;
+            this.client = unClient;
             InitializeComponent();}
 
 /// <summary>
@@ -29,30 +29,29 @@ namespace maquetteABI
         {
             cbxNatureClient.Items.AddRange(new String[] { "principale", "secondaire", "ancienne" });
             cbxTypeClient.Items.AddRange(new String[] { "public", "privee" });
-            this.afficheClient(LeClient);
+            this.afficheClient();
         }
         /// <summary>
         /// methode  affiche en textbox les données d'un client
         /// </summary>
         /// <param name="unClient"></param>
-        private void afficheClient(Clients unClient)
+        private void afficheClient()
 
         {
+            this.txtNumeroDeClient.Text = client.Numero_Client.ToString();
+            this.txtRaisonSocialeDuClient.Text = client.Raison_Social;
+            this.txtDomaineDactivite.Text = client.Domaine;
+            this.txtAdresseDuClient.Text = client.Adresse;
+            this.txtVille.Text = client.Ville;
+            this.txtCodePostale.Text = client.Code_postal.ToString();
+            this.txtTelephone.Text = client.Telephone.ToString();
+            this.txtChiffreDaffaire.Text = client.Chiffre_d_affaire.ToString();
+            this.txtEffectifs.Text = client.Effectif.ToString();
+            this.cbxNatureClient.Text = client.Nature;
+            this.cbxTypeClient.Text = client.Type;
+          //  this.txtCommentClient.Text = client.;
 
-            this.txtNumeroDeClient.Text = unClient.Numero_Client.ToString();
-            this.txtRaisonSocialeDuClient.Text = unClient.Raison_Social;
-            this.txtDomaineDactivite.Text = unClient.Domaine;
-            this.txtAdresseDuClient.Text = unClient.Adresse;
-            this.txtVille.Text = unClient.Ville;
-            this.txtCodePostale.Text = unClient.Code_postal.ToString();
-            this.txtTelephone.Text = unClient.Telephone.ToString();
-            this.txtChiffreDaffaire.Text = unClient.Chiffre_d_affaire.ToString();
-            this.txtEffectifs.Text = unClient.Effectif.ToString();
-            this.cbxNatureClient.Text = unClient.Nature;
-            this.cbxTypeClient.Text = unClient.Type;
-            //this.txtCommentClient.Text = unClient.;
-
-           // this.txtNumeroDeClient.Enabled = false;
+            this.txtNumeroDeClient.Enabled = false;
         }
 /// <summary>
 /// fermer la fenetre 
@@ -61,7 +60,7 @@ namespace maquetteABI
 /// <param name="e"></param>
         private void btnFermerClient_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.OK;
         }
         /// <summary>
         /// quand je click sur contact j ouvre la grille contacts
@@ -70,7 +69,7 @@ namespace maquetteABI
         /// <param name="e"></param>
         private void btnContactClient_Click(object sender, EventArgs e)
         {
-            frmgrdCONTA frmcontact = new frmgrdCONTA(LeClient);
+            frmgrdCONTA frmcontact = new frmgrdCONTA(client);
             DialogResult rep = frmcontact.ShowDialog();
 
         }
@@ -86,27 +85,24 @@ namespace maquetteABI
         
             if (this.controle())
             {//parcourir la liste des clients pour chercher le client concerné apres modifier  ses attribus
-                for (int i = 0; i < Donnees.DB.Clients.Count(); i++)
-                {
-                    if (Int32.Parse(txtNumeroDeClient.Text.Trim()) == Donnees.DB.Clients.Find(i).Numero_Client)
-                    {
-                        Clients client = Donnees.DB.Clients.Find(i);
-                        client.Numero_Client = a;
-                        client.Raison_Social = txtRaisonSocialeDuClient.Text;
-                        client.Domaine = txtDomaineDactivite.Text;
-                        client.Adresse = txtAdresseDuClient.Text;
-                        client.Ville = txtVille.Text;
-                        client.Telephone = txtTelephone.Text;
-                        client.Chiffre_d_affaire = decimal.Parse(txtChiffreDaffaire.Text.Trim());
-                        client.Code_postal = txtCodePostale.Text;
-                        client.Effectif = txtEffectifs.Text;
-                        client.Nature = cbxNatureClient.Text;
-                        client.Type = cbxTypeClient.Text;
-                    //    client.comment = txtCommentClient.Text;
-                    }
-                }               
+
+                Clients client = Donnees.DB.Clients.Find(Int32.Parse(txtNumeroDeClient.Text.Trim()));
+                client.Numero_Client = a;
+                client.Raison_Social = txtRaisonSocialeDuClient.Text;
+                client.Domaine = txtDomaineDactivite.Text;
+                client.Adresse = txtAdresseDuClient.Text;
+                client.Ville = txtVille.Text;
+                client.Telephone = txtTelephone.Text;
+                client.Chiffre_d_affaire = decimal.Parse(txtChiffreDaffaire.Text.Trim());
+                client.Code_postal = txtCodePostale.Text;
+                client.Effectif = txtEffectifs.Text;
+                client.Nature = cbxNatureClient.Text;
+                client.Type = cbxTypeClient.Text;
+                //client.comment = txtCommentClient.Text;
+
+            }              
                 this.DialogResult = DialogResult.Cancel;
-            }
+           
         }
         /// <summary>
         /// methode pour gerer les exceptions 
