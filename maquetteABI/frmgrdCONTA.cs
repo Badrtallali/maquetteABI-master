@@ -111,28 +111,7 @@ namespace maquetteABI
         /// <param name="e"></param>
         private void grdContact_DoubleClick(object sender, EventArgs e)
         {
-          //  if (grdClient.RowCount != 0)
-           // {
-          //      this.btnSupprimer.Enabled = true;
-           // }
-
-          //  if (grdClient.CurrentRow != null)
-          //  {
-               // Int32 iClient;
-             //   Boolean isIClientValid = Int32.TryParse(grdClient.CurrentRow.Cells[0].Value.ToString(), out iClient);
-             //   if (isIClientValid)
-              //  {
-               //     Clients leClient = Donnees.DB.Clients.Find(iClient);
-
-                //    frmCLIE frmclient = new frmCLIE(leClient);
-
-                 //   if (frmclient.ShowDialog() == DialogResult.OK)
-                 //   {
-                 //       this.afficheClient();
-                 //   }
-             //   }
-
-         //   }
+        
          if (grdContact.RowCount!=0)
             { this.btnSupprimerContact.Enabled = true; }
 
