@@ -65,7 +65,7 @@ namespace maquetteABI
             { 
             dr = dt.NewRow();
 
-               // dr[0] = i;
+               
                 dr[0] = unClientEF.Numero_Client;
                 dr[1] = unClientEF.Raison_Social;
                 dr[2] = unClientEF.Ville;
@@ -77,8 +77,7 @@ namespace maquetteABI
             // déterminer l'origine des données à afficher en DataGridView
             this.grdClient.DataSource = dt.DefaultView;
 
-            //rendre invisible ma premiere colomn
-            grdClient.Columns[0].Visible = true;
+         
             
 
         }      
@@ -120,7 +119,7 @@ namespace maquetteABI
                   "%' or [Code Postale Du Client] like '%" + this.txtRechercherClient.Text + "%' ";
         }
         /// <summary>
-        /// 
+        /// permet de rentrer a la fiche du client selectionee par un  double click sur le client 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

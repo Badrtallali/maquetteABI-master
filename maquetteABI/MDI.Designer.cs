@@ -90,7 +90,7 @@
             // listeClientToolStripMenuItem
             // 
             this.listeClientToolStripMenuItem.Name = "listeClientToolStripMenuItem";
-            this.listeClientToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listeClientToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.listeClientToolStripMenuItem.Text = "Liste Client";
             this.listeClientToolStripMenuItem.Click += new System.EventHandler(this.listeClientToolStripMenuItem_Click);
             // 
@@ -105,6 +105,7 @@
             this.Name = "frmMDI";
             this.Text = "MDI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMDI_FormClosing);
+            this.Load += new System.EventHandler(this.frmMDI_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

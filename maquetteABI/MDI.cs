@@ -39,5 +39,10 @@ namespace maquetteABI
         {
 
         }
+
+        private void frmMDI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="2502443dbef74f0eaef8d507b043fd8d" Name="Diagram1">
         <EntityTypeShape EntityType="ABIModel.Clients" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ABIModel.Contacts" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABIModel.Contacts" Width="1.5" PointX="3.375" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="ABIModel.FK_Contacts_Client" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
